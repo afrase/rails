@@ -87,6 +87,7 @@ module ActiveRecord
     autoload :AttributeMethods
     autoload :AutosaveAssociation
     autoload :AsynchronousQueriesTracker
+    autoload :RecursiveAssociation
 
     autoload :LegacyYamlAdapter
 

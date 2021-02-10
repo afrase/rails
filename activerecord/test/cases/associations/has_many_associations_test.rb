@@ -3067,6 +3067,14 @@ class HasManyAssociationsTest < ActiveRecord::TestCase
     end
   end
 
+  def test_creating_association_with_builder_methods_for_same_name_foreign_key
+    firm = Firm.find(15)
+    assert_sql(/INSERT.*comments.*company.*/) do
+      firm.comments.create(post: Post.first, body: 'body')
+      assert_equal(firm.comments.last.company.id, firm.id)
+    end
+  end
+
   private
     def force_signal37_to_load_all_clients_of_firm
       companies(:first_firm).clients_of_firm.load_target
