@@ -2125,7 +2125,7 @@ class HasManyAssociationsTest < ActiveRecord::TestCase
 
   def test_associations_order_should_be_priority_over_throughs_order
     original = authors(:david)
-    expected = [12, 10, 9, 8, 7, 6, 5, 3, 2, 1]
+    expected = [13, 12, 10, 9, 8, 7, 6, 5, 3, 2, 1]
     assert_equal expected, original.comments_desc.map(&:id)
     preloaded = Author.includes(:comments_desc).find(original.id)
     assert_equal expected, preloaded.comments_desc.map(&:id)
